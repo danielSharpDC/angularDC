@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mon-projet-angular';
+  title = 'Angular by daniel';
+
+  setTimeout(function(){
+        var ht=window.innerHeight;
+        document.querySelector("#smain").style.height=(ht-100)+"px";
+      }, 000000050);
 }
