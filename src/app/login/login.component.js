@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DonneesService } from ' ./donnees.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +11,9 @@ export class LoginComponent implements OnInit {
 
   cPseudo = true;
   cPass = true;
+  login = false;
+  pse = "";
+  mdp = "";
 
   getHeight(){
     var h=window.innerHeight;
@@ -19,6 +24,7 @@ export class LoginComponent implements OnInit {
     var obj=document.querySelector("#pse");
     if(obj.value.length>2){
       this.cPseudo=true;
+      this.pse=obj.value;
       obj.style.color="green";
       obj.style.borderColor="green";
     }else{
@@ -26,6 +32,7 @@ export class LoginComponent implements OnInit {
       obj.style.color="red";
       obj.style.borderColor="red";
     }
+  }
 
   vPass(){
     var ob=document.querySelector("#pas");
@@ -41,13 +48,18 @@ export class LoginComponent implements OnInit {
   }
 
   sendForm(){
-    
+    setTimeout(()=>{
+      if(this.cPseudo&&this.cPass){
+      this.login=true;
+    }
+  }, 2000); 
   }
 
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+    this.appService.pseudo = this.pse;
   }
 
 }

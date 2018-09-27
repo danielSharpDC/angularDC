@@ -6,6 +6,7 @@ import { MonPremierComponent } from './mon-premier/mon-premier.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppService } from './services/app.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

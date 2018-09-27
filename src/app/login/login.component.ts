@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from ' ../services/app.service';
+import { AppService } from '../services/app.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,16 +13,19 @@ export class LoginComponent implements OnInit {
   cPseudo = true;
   cPass = true;
   login = false;
-
+  pseu = "";
+  mdp = "";
+  ht = 500;
   getHeight(){
     var h=window.innerHeight;
-    return (h-120)+"px"; 
+    return (h-110)+"px"; 
   }
 
   vPseudo(){
     var obj=document.querySelector("#pse");
     if(obj.value.length>2){
       this.cPseudo=true;
+      this.pseu=obj.value;
       obj.style.color="green";
       obj.style.borderColor="green";
     }else{
@@ -47,13 +53,18 @@ export class LoginComponent implements OnInit {
       if(this.cPseudo&&this.cPass){
       this.login=true;
     }
-  }, 4000); 
+  }, 2000); 
   }
 
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
+    setInterval(()=>{
+      this.appService.pseudo = this.pseu;
+      this.ht=this.getHeight();
+    }, 1000);
+   
   }
 
 }
