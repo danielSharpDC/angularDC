@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   cPseudo = true;
+  cPass = true;
+  login = false;
 
   getHeight(){
     var h=window.innerHeight;
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   vPseudo(){
     var obj=document.querySelector("#pse");
-    if(obj.value!=""&&obj.value.length>2){
+    if(obj.value.length>2){
       this.cPseudo=true;
       obj.style.color="green";
       obj.style.borderColor="green";
@@ -27,8 +29,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  vPass(){
+    var ob=document.querySelector("#pas");
+    if(ob.value.length>4){
+      this.cPass=true;
+      ob.style.color="green";
+      ob.style.borderColor="green";
+    }else{
+      this.cPass=false;
+      ob.style.color="red";
+      ob.style.borderColor="red";
+    }
+  }
+
   sendForm(){
-    
+    setTimeout(()=>{
+      if(this.cPseudo&&this.cPass){
+      this.login=true;
+    }
+  }, 4000); 
   }
 
 
