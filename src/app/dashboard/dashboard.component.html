@@ -3,7 +3,10 @@
     <div id="aside" class="col-sm-3 sidenav">
       <div id="iProfil">
         <img src="../assets/images/none.png" width="15%"/><br>
-        <p id="ip"><i class="fa fa-user"></i> {{pse}}</p>
+        <p id="ip"><i class="fa fa-user"></i> 
+          {{ pse }}</p>
+        <input class="btn btn-detton-default" (click)="onSignOut()" value="logout" id="btnL"/>
+        <input class="btn btn-detton-default" (click)="allUsers()" value="All users" id="btnS"/>
       </div>
       <ul id="dUl">
         <li id="active" style="background:white();"><a href="#section1">All</a></li>
